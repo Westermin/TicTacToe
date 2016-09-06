@@ -11,7 +11,7 @@ int checkForWinner();
 int main()
 {
     do {
-        idx = (turn%2) ? 1:2;
+        idx = (turn%2==0) ? 1:2;
         std::cout << "Turn:" << turn << ", Player " << idx << ", enter a number:  ";
 	std::cin >> choice;
 	square[choice-1] = player[idx-1];
@@ -20,7 +20,7 @@ int main()
 	turn++;
     } while(checkwin == 0);
     if(checkwin==1)
-		std::cout << "The player " << idx-1 << " win.";
+		std::cout << "The player " << idx << " win.";
 	else
 		std::cout << "Game draw.";
     return 0;
