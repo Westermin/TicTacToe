@@ -11,13 +11,13 @@ int checkForWinner();
 int main()
 {
     do {
-        idx = (turn % 2 == 0) ? '1':'2';
-        board();
-        std::cout << "Turn:" << turn << ", enter a number:  ";
-		std::cin >> choice;
-		square[choice-1] = player[idx-1];
-		checkwin = checkForWinner();
-		turn++;
+        idx = (turn%2) ? 1:2;
+        std::cout << "Turn:" << turn << ", Player " << idx << ", enter a number:  ";
+	std::cin >> choice;
+	square[choice-1] = player[idx-1];
+	board();
+	checkwin = checkForWinner();
+	turn++;
     } while(checkwin == 0);
     if(checkwin==1)
 		std::cout << "The player " << idx-1 << " win.";
