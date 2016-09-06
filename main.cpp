@@ -8,13 +8,14 @@ int checkwin = 0;
 int main()
 {
     do {
-        idx = (turn % 2 == 0) ? '1':'2';
+        int idx = (turn % 2 == 0) ? 1:2;
         board();
         cout << "Turn:" << turn << " - Player " << idx-1 << ", enter a number:  ";
-		cin >> choice;
-		square[choice] = player[idx-1];
-		checkwin = checkForWinner();
-		turn++;
+        int choice = 0;
+	cin >> choice;
+	square[choice] = player[idx-1];
+	checkwin = checkForWinner();
+	turn++;
     } while(checkwin == 0);
     if(checkwin==1)
 		cout << "The player " << idx-1 << " win.";
