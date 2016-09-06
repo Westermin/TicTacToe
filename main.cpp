@@ -1,32 +1,34 @@
 #include <iostream>
 char square[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-char player[2] = {'X', 'Y'};
+char player[2] = {'X', 'O'};
 int turn = 0;
 bool arduinoisconnected = false;
 void board();
 int checkwin = 0;
+int idx =0;
+int choice;
+int checkForWinner();
 int main()
 {
     do {
-        int idx = (turn % 2 == 0) ? 1:2;
+        idx = (turn % 2 == 0) ? '1':'2';
         board();
-        cout << "Turn:" << turn << " - Player " << idx-1 << ", enter a number:  ";
-        int choice = 0;
-	cin >> choice;
-	square[choice] = player[idx-1];
-	checkwin = checkForWinner();
-	turn++;
+        std::cout << "Turn:" << turn << ", enter a number:  ";
+		std::cin >> choice;
+		square[choice-1] = player[idx-1];
+		checkwin = checkForWinner();
+		turn++;
     } while(checkwin == 0);
     if(checkwin==1)
-		cout << "The player " << idx-1 << " win.";
+		std::cout << "The player " << idx-1 << " win.";
 	else
-		cout << "Game draw.";
+		std::cout << "Game draw.";
     return 0;
 }
 void board()
 {
     // a lot of shit
-    std::cout << "Player's turn: " << player[turn] << std::endl;
+    std::cout << "Player's turn: " << player[1] << std::endl;
     std::cout << " _____ _____ _____ " << std::endl;
     std::cout << "|     |     |     |" << std::endl;
     std::cout << "|  " << square[0] <<   "  |  " << square[1] <<"  |  " << square[2] << "  |" << std::endl;
@@ -41,7 +43,7 @@ void board()
 }
 // look for any possible winning combination
 // returns 1 if there's a winner, 0 for a draw, -1 the game continues
-void checkForWinner()
+int checkForWinner()
 {
     if (square[1] == square[2] && square[2] == square[3])
 		return 1;
