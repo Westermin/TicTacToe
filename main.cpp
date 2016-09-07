@@ -14,9 +14,11 @@ int turn = 0;
 bool arduinoisconnected = false;
 int main();
 void board();
+void game();
 int checkwin = 0;
 int idx = 0;
 int choice;
+int play_game:
 int c1, c2, c3, c4, c5, c6, c7, c8, c9 = 0;
 int checkForWinner();
 
@@ -57,6 +59,22 @@ int main()
 	string received_bytes;
 
 	// ACTUAL CODE *******************************************************************************
+	game();
+	std::cout << "Would you like to play again?" << endl;
+	std::cin >> play_game;
+	if(play_game == 1)
+	{
+		c1, c2, c3, c4, c5, c6, c7, c8, c9 = 0;
+		game();
+		
+	}
+	else{
+		std::cout << "okay" << endl;
+	}
+	return 0;
+}
+void game()
+{
 	do {
 		idx = (turn % 2 == 0) ? 1 : 2;
 		board();
@@ -149,7 +167,6 @@ int main()
 		std::cout << "Game draw.";
 		std::cout << checkwin << std::endl;
 	}
-	return 0;
 }
 
 void board()
