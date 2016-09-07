@@ -1,9 +1,11 @@
-#include "SerialClass.h"	// Library described above
+#include <stdio.h> // Should be removed later when all the stdio related stuff like prinf has been replace with c out
+#include <string>
+#include "serial.h"
 #include <iostream>
 using std::cout;
 using std::endl;
 char square[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-char player[2] = {'X', 'O'};
+char player[3] = {'X', 'O'};
 int turn = 0;
 bool arduinoisconnected = false;
 void board();
@@ -13,8 +15,6 @@ int choice;
 int c1, c2 ,c3, c4, c5, c6, c7, c8, c9 = 0;
 int checkForWinner();
 
-
-
 // application reads from the specified serial port and reports the collected data
 int main()
 {
@@ -22,7 +22,6 @@ int main()
     do {
         idx = (turn%2==0) ? 1:2;
         board();
-        std::cout << "Turn:" << turn << ", Player " << idx << ", enter a number:  ";
 	std::cin >> choice;
 
 	if (choice == 1 && c1 == 0)
@@ -91,7 +90,7 @@ int main()
     if(checkwin==1)
     {
 
-		std::cout << "The player " << idx << " win.";
+		std::cout << "The player " << player[idx-1] << " win.";
     }
 	else
     {
@@ -115,8 +114,8 @@ void board()
 |  7  |  8  |  9  |
 |_____|_____|_____|
 */
-    // a lot of shit
-    cout << "Player's turn: " << player[1] << endl;
+
+    cout << "Player's turn: " << player[idx-1] << endl;
     cout << " _________________" << endl;
     cout << "|     |     |     |" << endl;
     cout << "|  " << square[0] <<   "  |  " << square[1] <<"  |  " << square[2] << "  |" << endl;
