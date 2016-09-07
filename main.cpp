@@ -4,21 +4,91 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+
 char square[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 char player[3] = {'X', 'O'};
 int turn = 0;
 bool arduinoisconnected = false;
 void board();
+void game();
 int checkwin = 0;
 int idx =0;
 int choice;
+int play_again;
 int c1, c2 ,c3, c4, c5, c6, c7, c8, c9 = 0;
 int checkForWinner();
 
 // application reads from the specified serial port and reports the collected data
 int main()
 {
-// ACTUAL CODE *******************************************************************************
+    game();
+    cout << "Would you like to play again? 1/0" << endl;
+    std::cin >> play_again;
+    if(play_again == 1)
+    {
+        game();
+    }
+    else
+    {
+        cout << "Okay" << endl;
+    }
+
+}
+void board()
+{
+/* Grapichs of the text.
+ _____ _____ _____
+|     |     |     |
+|  1  |  2  |  3  |
+|_____|_____|_____|
+|     |     |     |
+|  4  |  5  |  6  |
+|_____|_____|_____|
+|     |     |     |
+|  7  |  8  |  9  |
+|_____|_____|_____|
+*/
+
+    cout << "Player's turn: " << player[idx-1] << endl;
+    cout << " _________________" << endl;
+    cout << "|     |     |     |" << endl;
+    cout << "|  " << square[0] <<   "  |  " << square[1] <<"  |  " << square[2] << "  |" << endl;
+    cout << "|_____|_____|_____|" << endl;
+    cout << "|     |     |     |" << endl;
+    cout << "|  " << square[3] <<   "  |  " << square[4] <<"  |  " << square[5] << "  |" << endl;
+    cout << "|_____|_____|_____|" << endl;
+    cout << "|     |     |     |" << endl;
+    cout << "|  " << square[6] <<   "  |  " << square[7] <<"  |  " << square[8] << "  |" << endl;
+    cout << "|_____|_____|_____|" << endl;
+    cout << "Connected to Arduino: " << arduinoisconnected << endl;
+}
+// look for any possible winning combination
+// returns 1 if there's a winner, 0 for a draw, -1 the game continues
+int checkForWinner()
+{
+if (square[0] == square[1] && square[1] == square[2])
+		return 1;
+	else if (square[3] == square[4] && square[4] == square[5])
+		return 1;
+	else if (square[6] == square[7] && square[7] == square[8])
+		return 1;
+	else if (square[0] == square[3] && square[3] == square[6])
+		return 1;
+	else if (square[1] == square[4] && square[4] == square[7])
+		return 1;
+	else if (square[2] == square[5] && square[5] == square[8])
+		return 1;
+	else if (square[0] == square[4] && square[4] == square[8])
+		return 1;
+	else if (square[2] == square[4] && square[4] == square[6])
+		return 1;
+	else if (square[0] != '1' && square[1] != '2' && square[2] != '3'  && square[3] != '4' && square[4] != '5' && square[5] != '6' && square[6] != '7' && square[7] != '8' && square[8] != '9')
+		return 0;
+	else
+		return -1;
+}
+void game()
+{
     do {
         idx = (turn%2==0) ? 1:2;
         board();
@@ -98,58 +168,5 @@ int main()
 		std::cout << "Game draw.";
 		std::cout << checkwin << std::endl;
     }
-    return 0;
-}
-void board()
-{
-/* Grapichs of the text.
- _____ _____ _____
-|     |     |     |
-|  1  |  2  |  3  |
-|_____|_____|_____|
-|     |     |     |
-|  4  |  5  |  6  |
-|_____|_____|_____|
-|     |     |     |
-|  7  |  8  |  9  |
-|_____|_____|_____|
-*/
-
-    cout << "Player's turn: " << player[idx-1] << endl;
-    cout << " _________________" << endl;
-    cout << "|     |     |     |" << endl;
-    cout << "|  " << square[0] <<   "  |  " << square[1] <<"  |  " << square[2] << "  |" << endl;
-    cout << "|_____|_____|_____|" << endl;
-    cout << "|     |     |     |" << endl;
-    cout << "|  " << square[3] <<   "  |  " << square[4] <<"  |  " << square[5] << "  |" << endl;
-    cout << "|_____|_____|_____|" << endl;
-    cout << "|     |     |     |" << endl;
-    cout << "|  " << square[6] <<   "  |  " << square[7] <<"  |  " << square[8] << "  |" << endl;
-    cout << "|_____|_____|_____|" << endl;
-    cout << "Connected to Arduino: " << arduinoisconnected << endl;
-}
-// look for any possible winning combination
-// returns 1 if there's a winner, 0 for a draw, -1 the game continues
-int checkForWinner()
-{
-if (square[0] == square[1] && square[1] == square[2])
-		return 1;
-	else if (square[3] == square[4] && square[4] == square[5])
-		return 1;
-	else if (square[6] == square[7] && square[7] == square[8])
-		return 1;
-	else if (square[0] == square[3] && square[3] == square[6])
-		return 1;
-	else if (square[1] == square[4] && square[4] == square[7])
-		return 1;
-	else if (square[2] == square[5] && square[5] == square[8])
-		return 1;
-	else if (square[0] == square[4] && square[4] == square[8])
-		return 1;
-	else if (square[2] == square[4] && square[4] == square[6])
-		return 1;
-	else if (square[0] != '1' && square[1] != '2' && square[2] != '3'  && square[3] != '4' && square[4] != '5' && square[5] != '6' && square[6] != '7' && square[7] != '8' && square[8] != '9')
-		return 0;
-	else
-		return -1;
+    void board();
 }
