@@ -1,5 +1,3 @@
-#include <stdio.h> // Should be removed later when all the stdio related stuff like prinf has been replace with c out
-#include <string>
 #include "serial.h"
 #include <iostream>
 using std::cout;
