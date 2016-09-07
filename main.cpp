@@ -1,7 +1,4 @@
-#include <stdio.h> // Should be removed later when all the stdio related stuff like prinf has been replace with c out
 #include "SerialClass.h"	// Library described above
-#include <string>
-#include <tchar.h>
 #include <iostream>
 char square[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 char player[2] = {'X', 'O'};
@@ -17,33 +14,8 @@ int checkForWinner();
 
 
 // application reads from the specified serial port and reports the collected data
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
-	printf("Welcome to the serial test app!\n\n");
-
-	Serial* SP = new Serial("\\\\.\\COM3");    // adjust as needed
-
-	if (SP->IsConnected())
-		printf("We're connected");
-
-	char incomingData[256] = "";			// don't forget to pre-allocate memory
-	//printf("%s\n",incomingData);
-	int dataLength = 255;
-	int readResult = 0;
-
-	while(SP->IsConnected())
-	{
-		readResult = SP->ReadData(incomingData,dataLength);
-		// printf("Bytes read: (0 means no data available) %i\n",readResult);
-                incomingData[readResult] = 0;
-
-        	printf("%s",incomingData);
-
-		Sleep(500);
-	}
-	return 0;
-
-
 // ACTUAL CODE *******************************************************************************
     do {
         idx = (turn%2==0) ? 1:2;
