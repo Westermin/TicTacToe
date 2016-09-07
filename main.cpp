@@ -101,6 +101,18 @@ int main()
 }
 void board()
 {
+/* Grapichs of the text.
+ _____ _____ _____
+|     |     |     |
+|  1  |  2  |  3  |
+|_____|_____|_____|
+|     |     |     |
+|  4  |  5  |  6  |
+|_____|_____|_____|
+|     |     |     |
+|  7  |  8  |  9  |
+|_____|_____|_____|
+*/
     // a lot of shit
     std::cout << "Player's turn: " << player[1] << std::endl;
     std::cout << " _____ _____ _____ " << std::endl;
