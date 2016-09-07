@@ -1,5 +1,7 @@
 #include "SerialClass.h"	// Library described above
 #include <iostream>
+using std::cout;
+using std::endl;
 char square[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
 char player[2] = {'X', 'O'};
 int turn = 0;
@@ -114,18 +116,18 @@ void board()
 |_____|_____|_____|
 */
     // a lot of shit
-    std::cout << "Player's turn: " << player[1] << std::endl;
-    std::cout << " _____ _____ _____ " << std::endl;
-    std::cout << "|     |     |     |" << std::endl;
-    std::cout << "|  " << square[0] <<   "  |  " << square[1] <<"  |  " << square[2] << "  |" << std::endl;
-    std::cout << "|_____|_____|_____|" << std::endl;
-    std::cout << "|     |     |     |" << std::endl;
-    std::cout << "|  " << square[3] <<   "  |  " << square[4] <<"  |  " << square[5] << "  |" << std::endl;
-    std::cout << "|_____|_____|_____|" << std::endl;
-    std::cout << "|     |     |     |" << std::endl;
-    std::cout << "|  " << square[6] <<   "  |  " << square[7] <<"  |  " << square[8] << "  |" << std::endl;
-    std::cout << "|_____|_____|_____|" << std::endl;
-    std::cout << "Connected to Arduino: " << arduinoisconnected << std::endl;
+    cout << "Player's turn: " << player[1] << endl;
+    cout << " _________________" << endl;
+    cout << "|     |     |     |" << endl;
+    cout << "|  " << square[0] <<   "  |  " << square[1] <<"  |  " << square[2] << "  |" << endl;
+    cout << "|_____|_____|_____|" << endl;
+    cout << "|     |     |     |" << endl;
+    cout << "|  " << square[3] <<   "  |  " << square[4] <<"  |  " << square[5] << "  |" << endl;
+    cout << "|_____|_____|_____|" << endl;
+    cout << "|     |     |     |" << endl;
+    cout << "|  " << square[6] <<   "  |  " << square[7] <<"  |  " << square[8] << "  |" << endl;
+    cout << "|_____|_____|_____|" << endl;
+    cout << "Connected to Arduino: " << arduinoisconnected << endl;
 }
 // look for any possible winning combination
 // returns 1 if there's a winner, 0 for a draw, -1 the game continues
