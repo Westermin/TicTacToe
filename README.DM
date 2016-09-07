@@ -1,3 +1,2 @@
 SOURCES
-http://playground.arduino.cc/Interfacing/CPPWindows
-https://www.arduino.cc/en/Tutorial/SoftwareSerialExample
+https://github.com/wjwwood/serial
