@@ -44,7 +44,7 @@ void game()
 		std::cin >> choice;
 		int serialchoice = 0;
 		bool validChoice = true;
-		if (choice == 1 || serialchoice == 1  && c1 == 0)
+		if (choice == 1 || serialchoice == 1 && c1 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c1 = 1;
@@ -56,13 +56,13 @@ void game()
 			c2 = 1;
 			turn++;
 		}
-		else if (choice == 3 || serialchoice == 1  && c3 == 0)
+		else if (choice == 3 || serialchoice == 1 && c3 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c3 = 1;
 			turn++;
 		}
-		else if (choice == 4 || serialchoice == 1  && c4 == 0)
+		else if (choice == 4 || serialchoice == 1 && c4 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c4 = 1;
@@ -74,25 +74,25 @@ void game()
 			c5 = 1;
 			turn++;
 		}
-		else if (choice == 6 || serialchoice == 1  && c6 == 0)
+		else if (choice == 6 || serialchoice == 1 && c6 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c6 = 1;
 			turn++;
 		}
-		else if (choice == 7 || serialchoice == 1  && c7 == 0)
+		else if (choice == 7 || serialchoice == 1 && c7 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c7 = 1;
 			turn++;
 		}
-		else if (choice == 8 || serialchoice == 1  && c8 == 0)
+		else if (choice == 8 || serialchoice == 1 && c8 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c8 = 1;
 			turn++;
 		}
-		else if (choice == 9 || serialchoice == 1  && c9 == 0)
+		else if (choice == 9 || serialchoice == 1 && c9 == 0)
 		{
 			square[choice - 1] = player[idx - 1];
 			c9 = 1;
